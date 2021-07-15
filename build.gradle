@@ -23,6 +23,8 @@ dependencies {
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'org.telegram:telegrambots-spring-boot-starter:5.3.0'
+
 }
 
 test {
