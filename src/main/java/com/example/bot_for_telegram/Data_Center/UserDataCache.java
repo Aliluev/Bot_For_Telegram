@@ -8,25 +8,37 @@ import java.util.Map;
 
 @Component
 public class UserDataCache implements DataCache{
-    private Map<Integer, BotState> usersBotStates = new HashMap<>();
-    private Map<Integer, UserData> usersProfileData = new HashMap<>();
+    private Map<String, BotState> usersBotStates = new HashMap<>();
+    private Map<String, UserData> usersProfileData = new HashMap<>();
+
+    // Заменил на String
     @Override
-    public void setUsersCurrentBotState(int userId, BotState botState) {
+    public void setUsersCurrentBotState(String userId, BotState botState) {
         usersBotStates.put(userId, botState);
     }
 
+
     @Override
-    public BotState getUsersCurrentBotState(int userId) {
-        return null;
+    public BotState getUsersCurrentBotState(String userId) {
+        BotState botState = usersBotStates.get(userId);
+        if (botState == null) {
+            botState = BotState.START;
+        }
+
+        return botState;
     }
 
     @Override
-    public UserData getUserProfileData(int userId) {
-        return null;
+    public UserData getUserProfileData(String userId) {
+        UserData userProfileData = usersProfileData.get(userId);
+        if (userProfileData == null) {
+            userProfileData = new UserData();
+        }
+        return userProfileData;
     }
 
     @Override
-    public void saveUserProfileData(int userId, UserData userProfileData) {
-
+    public void saveUserProfileData(String userId, UserData userProfileData) {
+        usersProfileData.put(userId, userProfileData);
     }
 }

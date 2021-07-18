@@ -2,12 +2,15 @@ package com.example.bot_for_telegram.Data_Center;
 
 import com.example.bot_for_telegram.ChatBox.BotState;
 
+
+//Всё заменил на String
+
 public interface DataCache {
-    void setUsersCurrentBotState(int userId, BotState botState);
+    void setUsersCurrentBotState(String userId, BotState botState);
 
-    BotState getUsersCurrentBotState(int userId);
+    BotState getUsersCurrentBotState(String userId);
 
-    UserData getUserProfileData(int userId);
+    UserData getUserProfileData(String userId);
 
-    void saveUserProfileData(int userId, UserData userProfileData);
+    void saveUserProfileData(String userId, UserData userProfileData);
 }
